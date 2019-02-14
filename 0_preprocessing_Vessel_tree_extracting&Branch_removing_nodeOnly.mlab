@@ -1,0 +1,323 @@
+// MDL v1 utf8
+network  {
+  watchlist = ""
+}
+module LocalFileName {
+  internal  {
+    frame = "857 45 112 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "775 494 480 103"
+        sizeHint = "480 103"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = LocalFileName
+    localName = $(NETWORK)/
+    checkIfFileExists = TRUE
+  }
+}
+module Comment {
+  internal  {
+    frame = "829 253 88 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "110 446 439 208"
+        sizeHint = "256 208"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Comment
+    comment = "1. load vessel segmentation using 'itkImageFileReader';
+2. do skeletonization of binary vessels using 'DtfSkeletonization';
+3. Remove vessel branch with certain level.
+4. write the skeleton into a structured pointlist
+"
+  }
+}
+module itkImageFileReader {
+  internal  {
+    frame = "1277 629 136 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "804 685 453 395"
+        sizeHint = "299 395"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileReader
+    fileDataType = int16
+    autoDetermineDataType = FALSE
+    correctSubVoxelShift = TRUE
+    fileDimension = 3
+    info = "Loading okay."
+    numDims = 3
+    fileType = Binary
+    componentType = "unsigned int8"
+    pixelType = SCALAR
+    loaderType = MetaImageIO
+    outputMetaDataStr = "ITK_InputFilterName : MetaImageIO
+"
+    unresolvedFileName = P:/Databases/VESSEL12/VESSEL12_Database/VESSEL12train/VESSEL12_patient_22/20111123/TLC_HRes/masks/vessels/VESSEL12_22_Gc.mha
+  }
+}
+module DtfSkeletonization {
+  internal  {
+    frame = "1241 461 160 56"
+    moduleGroupName = Vessel_Skeleton_editing
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "804 469 329 321"
+        sizeHint = "327 321"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = DtfSkeletonization
+    updateSkeletonGraph = TRUE
+    compileGraphVoxels = FALSE
+    objectMinValue = 1
+    cavityVolume = 10
+    maxDistance = 10000
+    useMaxDistance = FALSE
+    autoUpdateMode = Off
+    skeletonOnly = TRUE
+  }
+}
+module SoVascularSystem {
+  internal  {
+    frame = "1417 213 144 56"
+    moduleGroupName = Vessel_Skeleton_editing
+    windows  {
+      window _default {
+        geometry = "1324 246 369 595"
+        sizeHint = "369 595"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoVascularSystem2
+    interactionProviderID = ""
+    autoApply = TRUE
+    complexity = 0.60000002
+    pointSize = 1
+    lineWidth = 1
+    textureScaleX = 0.5
+    textureScaleY = 0.5
+    recursionDepth = -1
+    showLines = FALSE
+    labelMode = GENERAL_LABEL
+    textureMode = SIZE_ALMOST_EQUAL
+    textureCoordinateMode = FOR_ALL_ELEMENTS
+    radiusMode = MIN_DIST
+    displayMode = DISPLAY_SKELETON
+    radiusScale = 1
+    radiusFixedSize = 1
+    visible = TRUE
+    texture = FALSE
+    numSmoothingPasses = 3
+    overallSmoothness = 0.69999999
+    smoothIndependently = FALSE
+    radiusSmoothness = 0.69999999
+    skeletonSmoothness = 0.69999999
+    endCapScaling = 1
+    useGeneralColor = TRUE
+    generalColor = "0.156862750649452 0.0117647061124444 1"
+    useAlternativeTransparency = TRUE
+    alternativeTransparencyColor = "0 0 0"
+    selectedCoordinate = "0 0 0"
+    snapMode = SNAP_TO_SKELETON
+    enableSelection = TRUE
+    continuousHitCheck = FALSE
+    cursorShape = CROSS_CURSOR
+    enableInteractivePreviewMode = FALSE
+    enableRecursiveHighlighting = TRUE
+    highlightWholeEdge = FALSE
+    interactivePreviewColor = "1 1 0"
+    interactivePreviewAlpha = 0.5
+    selectionTolerance = 2
+    useSkeletonColors = FALSE
+  }
+}
+module SkeletonSaveToPointlist {
+  internal  {
+    frame = "1157 197 168 56"
+    moduleGroupName = Vessel_Skeleton_editing
+    windows  {
+      window _default {
+        geometry = "609 598 675 256"
+        sizeHint = "422 256"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SkeletonSaveToPointlist1
+    OnlyNodes = TRUE
+    Allpoints = FALSE
+    AllpointsO = FALSE
+    DownsamplePoints = FALSE
+    Filename = "E:/zzhai/project/Mevis/VesselTree_matching/PointSetRegistration/Github_version/VascularTreeMatching\\VesselSkeletons\\VesselNode10.txt"
+    listType = FALSE
+  }
+}
+module StringUtils {
+  internal  {
+    frame = "1129 53 96 56"
+    moduleGroupName = Vessel_Skeleton_editing
+    windows  {
+      window _default {
+        geometry = "605 662 1237 331"
+        sizeHint = "370 331"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = StringUtils5
+    operationType = Concatenate
+    string1 = E:/zzhai/project/Mevis/VesselTree_matching/PointSetRegistration/Github_version/VascularTreeMatching
+    string2 = "\\VesselSkeletons\\VesselNode"
+    string3 = 10
+    string4 = .txt
+    string5 = ""
+    string6 = ""
+    stringPrefix = [
+    stringPostfix = ]
+    toggle1 = TRUE
+    toggle2 = TRUE
+    toggle3 = TRUE
+    toggle4 = TRUE
+    toggle5 = FALSE
+    toggle6 = FALSE
+    togglePrefix = FALSE
+    togglePostfix = FALSE
+    separator = ""
+    selectSeparator = 0
+    toggleIgnoreCase = FALSE
+    inPos1 = 0
+    inPos2 = 0
+  }
+}
+module SkeletonRemoving {
+  internal  {
+    frame = "1237 337 184 64"
+    moduleGroupName = Vessel_Skeleton_editing
+    windows  {
+      window _default {
+        geometry = "834 748 290 121"
+        sizeHint = "215 121"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Skeleton_branch_removing
+    RemovingLevel = 10
+    StepLength = 30
+  }
+}
+module SaveBase {
+  internal  {
+    frame = "1345 125 96 56"
+    moduleGroupName = Vessel_Skeleton_editing
+    windows  {
+      window _default {
+        geometry = "454 289 1031 216"
+        sizeHint = "548 216"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SaveBase1
+    nodeName = Graph
+    filename = "E:/zzhai/project/Mevis/VesselTree_matching/PointSetRegistration/Github_version/VascularTreeMatching\\VesselSkeletons\\VesselNode10.xml"
+    useBaseDir = FALSE
+    baseDir = ""
+    format = XML
+    autoSave = FALSE
+    allowOverwrite = TRUE
+  }
+}
+module StringUtils {
+  internal  {
+    frame = "1329 45 96 56"
+    moduleGroupName = Vessel_Skeleton_editing
+    windows  {
+      window _default {
+        geometry = "923 214 827 331"
+        sizeHint = "370 331"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = StringUtils2
+    operationType = Concatenate
+    string1 = E:/zzhai/project/Mevis/VesselTree_matching/PointSetRegistration/Github_version/VascularTreeMatching
+    string2 = "\\VesselSkeletons\\VesselNode"
+    string3 = 10
+    string4 = .xml
+    string5 = ""
+    string6 = ""
+    stringPrefix = [
+    stringPostfix = ]
+    toggle1 = TRUE
+    toggle2 = TRUE
+    toggle3 = TRUE
+    toggle4 = TRUE
+    toggle5 = FALSE
+    toggle6 = FALSE
+    togglePrefix = FALSE
+    togglePostfix = FALSE
+    separator = ""
+    selectSeparator = 0
+    toggleIgnoreCase = FALSE
+    inPos1 = 0
+    inPos2 = 0
+  }
+}
+connections  {
+  DtfSkeletonization.input0 = itkImageFileReader.output0
+  SoVascularSystem2.inputGraph = Skeleton_branch_removing.outObject
+  SkeletonSaveToPointlist1.inObject = Skeleton_branch_removing.outObject
+  SkeletonSaveToPointlist1.Filename = StringUtils5.result
+  StringUtils5.string1 = LocalFileName.trueName
+  StringUtils5.string3 = Skeleton_branch_removing.RemovingLevel
+  Skeleton_branch_removing.inObject = DtfSkeletonization.outBase1
+  SaveBase1.inObject = Skeleton_branch_removing.outObject
+  SaveBase1.filename = StringUtils2.result
+  StringUtils2.string1 = LocalFileName.trueName
+  StringUtils2.string2 = StringUtils5.string2
+  StringUtils2.string3 = Skeleton_branch_removing.RemovingLevel
+}
+networkModel  {
+  parentItems  {
+    0  {
+      MLABNetworkModelItem MLABNetworkModelItemGroup {
+        uniqueId = 112
+        objectName = Vessel_Skeleton_editing
+        parentUniqueId = 0
+        color  {
+          r = 45
+          g = 226
+          b = 226
+          a = 40
+        }
+      }
+    }
+  }
+}
