@@ -5,8 +5,9 @@ The source code works with pulmonary vascular tree matching, including point set
 A data set of 10 synthetic trees is included in './inputs/VesselNode_deformed/'.
 
 How to run?
+```
 1. run "1_Run_Synthetic_Tree_nodeOnly.m" to play with synthetic trees.
-
+```
 If you use the software, you should reference the following paper:
 ```
 @inproceedings{zhai2018pulmonary,
