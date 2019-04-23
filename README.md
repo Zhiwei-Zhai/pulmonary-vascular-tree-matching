@@ -6,7 +6,7 @@ A data set of 10 synthetic trees is included in './inputs/VesselNode_deformed/'.
 
 How to run?
 ```
-1. run "1_Run_Synthetic_Tree_nodeOnly.m" to play with synthetic trees.
+1. run "S1_Run_Synthetic_Tree_nodeOnly.m" to play with synthetic trees.
 ```
  
 <div align="center">

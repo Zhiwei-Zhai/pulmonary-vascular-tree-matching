@@ -10,7 +10,7 @@ neighbors = zeros(Num_node, K);
 
 for inode = 1:Num_node
     K_find = 0;
-    ID = trees(inode, 1);   PreID = trees(inode, 7);
+    ID = trees(inode, 1);   PreID = trees(inode, end);
     while K_find < K &&~(PreID == -1 && ID == 0)
         if PreID ~= -1
             [pind, PreID, K_find] = findPreID(trees, PreID, K_find);
@@ -29,10 +29,10 @@ function [ind, preID, K_find] =  findPreID(trees, preID, K_find)
     IDs = find(trees(:,1) == preID);
     ind = IDs(1);
     K_find = K_find +1;
-    preID = trees(ind, 7);
+    preID = trees(ind, end);
 end
 function [ind, ID] =  findPostID(trees, ID)
-    IDs = find(trees(:,7) == ID);
+    IDs = find(trees(:,end) == ID);
     if ~isempty(IDs) 
 %         ind = IDs;        % cover certain branches
         ind = datasample(IDs,1);% deep first
