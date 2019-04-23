@@ -1,4 +1,4 @@
-# pulmonary-vascular-tree-matching
+# pulmonary vessel tree matching
 
 The source code works with pulmonary vascular tree matching, including point set registration methods of CPD [1], GLTP [2] and GLTPg [3]. The pre-processing step of vessel tree extraction and editing is provided, more details about the soure code could be find in the MICCAI paper of [3].
 
@@ -14,6 +14,8 @@ How to run?
     <br>  
     <em align="center">Fig 1: A 3D visualization of vascular tree matching for the matching between T5 and T1, CPD, GLTP and our method.</em>  
 </div>
+
+
 
 If you use the software, you should reference the following paper:
 ```
